@@ -1,0 +1,11 @@
+<div class="ht-100" style="margin: 20px">
+  <app-select-players></app-select-players>
+
+  <app-game-board></app-game-board>
+
+  <div class="flex thumbnail">
+    <app-thumbnail *ngFor="let thumbnail of teste"
+                    [thumbnail]="thumbnail">
+    </app-thumbnail>
+  </div>
+</div>

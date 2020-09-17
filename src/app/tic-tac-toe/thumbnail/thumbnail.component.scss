@@ -1,0 +1,23 @@
+.thumbnail {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.photo {
+  flex-direction: column;
+  align-items: center;
+}
+// Formatação pontos
+.points {
+  font-size: 28px;
+}
+// Formatação nome do jogador
+.name {
+  font-size: 12px;
+  margin-top: 4px;
+}
+@media screen and (min-width: 992px) {
+  .name {
+    font-size: 14px;
+  }
+}

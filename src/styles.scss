@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+// configurações padrões
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+html, body, div, li, ul, ol, table, span, tr, td, th, nav, header, section, article, button, form, input, p, img, figure {
+  box-sizing: border-box;
+}
+// css's padrões
+.wd-100 {
+  width: 100%;
+}
+.ht-100 {
+  height: 100%;
+}
+.flex {
+  display: flex;
+}

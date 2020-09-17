@@ -1,0 +1,12 @@
+<div class="text-center mt-3 mb-3">
+  <form (submit)="preventDefault($event)">
+      <i aria-hidden="true" class="fa fa-search mr-2"></i>
+      <!-- aria-hidden="true" -> indicação para leitores de tela ignorarem esse ícone -->
+        <input
+            class="rounded"
+            type="search"
+            placeholder="Escolha um personagem"
+            autofocus
+            (input)="debounce.next($event.target.value)" />
+  </form>
+</div>
