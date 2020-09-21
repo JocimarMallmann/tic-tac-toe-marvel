@@ -1,5 +1,10 @@
-<div class="ht-100" style="margin: 20px">
-  <app-select-players></app-select-players>
+<div class="ht-100" style="margin: 20px; position: relative;">
+  <app-select-players (eventKeyupEnter)="nameSearchEnter($event)">
+  </app-select-players>
+
+  <app-error-message [text]="errors.message"
+                     [error]="errors.characterSearch"
+                     [attempts]="errors.attempts"></app-error-message>
 
   <app-game-board></app-game-board>
 

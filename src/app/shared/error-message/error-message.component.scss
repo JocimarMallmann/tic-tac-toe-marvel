@@ -1,0 +1,26 @@
+.error {
+  position: absolute;
+  width: 50%;
+  background-color: #ffcdd2;
+  color: #e57373;
+  border: 1px solid #ef9a9a;
+  padding: 12px;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity .5s ease;
+  animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+  0% {
+    transform: translateY(20%);
+  }
+  40% {
+    transform: translateY(-10%);
+  }
+  80% {
+    transform: translateY(0%)
+  }
+  100% {
+    transform: translateY(-10%);
+  }
+}

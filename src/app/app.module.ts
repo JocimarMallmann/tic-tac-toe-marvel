@@ -7,7 +7,7 @@ import { TicTacToeModule } from './tic-tac-toe/tic-tac-toe.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

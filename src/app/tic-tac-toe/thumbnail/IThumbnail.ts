@@ -1,6 +1,7 @@
 export interface IThumbnail {
-  characterImage?: string;
+  id?: number;
   characterName?: string;
+  characterImage?: string;
   points?: number;
   marginPhoto?: string;
   flexDirectionThumbnail?: string;

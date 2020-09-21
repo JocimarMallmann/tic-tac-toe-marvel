@@ -6,6 +6,7 @@ import { TicTacToeComponent } from './tic-tac-toe.component';
 import { GameBoardModule } from './game-board/game-board.module';
 import { ThumbnailModule } from './thumbnail/thumbnail.module';
 import { SelectPlayersModule } from './select-players/select-players.module';
+import { ErrorMessageModule } from '../shared/error-message/error-message.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SelectPlayersModule } from './select-players/select-players.module';
     CommonModule,
     GameBoardModule,
     ThumbnailModule,
-    SelectPlayersModule
+    SelectPlayersModule,
+    ErrorMessageModule
   ],
   exports: [
     TicTacToeComponent

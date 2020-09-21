@@ -7,6 +7,7 @@
             type="search"
             placeholder="Escolha um personagem"
             autofocus
-            (input)="debounce.next($event.target.value)" />
+            (input)="debounce.next($event.target.value)"
+            (keyup)="onEventKeyupEnter($event)" />
   </form>
 </div>
