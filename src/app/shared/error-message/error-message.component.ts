@@ -32,6 +32,7 @@ export class ErrorMessageComponent implements OnInit, OnChanges {
     } else {
       this.render.setStyle(this.divError.nativeElement, 'opacity', '0')
     }
+    // this.render.setValue(this.divError.nativeElement, '')
   }
 
   ngOnInit(): void {

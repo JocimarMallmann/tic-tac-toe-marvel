@@ -1,1 +1,14 @@
-<p>game-board works!</p>
+<div class="" #gameBoardd>
+  <div *ngFor="let rows of gameBoard; let i = index"
+        class="flex">
+    <div *ngFor="let cols of rows; let j = index"
+          class="square"
+          (click)="play(i, j)"
+          [ngClass]="{
+            'x': showX(i,j),
+            'o': showO(i,j)
+          }">
+          <!-- $event.target -->
+    </div>
+  </div>
+</div>
