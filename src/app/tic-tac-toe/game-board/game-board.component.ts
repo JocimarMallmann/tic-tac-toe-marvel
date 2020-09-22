@@ -7,14 +7,15 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 })
 export class GameBoardComponent implements OnInit {
 
-  ROWS: number = 3;
-  EMPTY: number = 0;
+  readonly ROWS: number = 3;
+  readonly EMPTY: number = 0;
+  readonly X: number = 1;
+  readonly O: number = 2;
   player: number = null;
-  X: number = 1;
-  O: number = 2;
   gameBoard = [];
-  plays: number = 0;
+  plays: number = 0; // número de jogadas
   victory: boolean = false;
+  empate: boolean = false;
 
   constructor() { }
 
@@ -36,7 +37,7 @@ export class GameBoardComponent implements OnInit {
       console.log('casa indisponível');
       return;
     }
-    console.log(this.gameBoard);// debugger
+    console.log(this.gameBoard);
 
     // adicionando jogada
     this.gameBoard[i][j] = this.player;
@@ -94,6 +95,10 @@ export class GameBoardComponent implements OnInit {
     if(finisher) {
       this.victory = true;
     }
+    if(this.plays > 8 && !finisher) {
+      this.empate = true;
+    }
+    console.log('vítoria: ', this.victory, ' empate: ', this.empate);
     return finisher;
   }
 

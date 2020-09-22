@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AsyncSubject, BehaviorSubject } from 'rxjs';
 
 import { IThumbnail } from './thumbnail/IThumbnail';
 import { TicTacToeService } from './tic-tac-toe.service';
@@ -13,8 +12,6 @@ export class TicTacToeComponent implements OnInit {
 
   marvel: any = {};
   private characterData: any[] = [];
-  // private characterData = new BehaviorSubject<any[]>([]);
-  // private characterData = new AsyncSubject();
   characters: IThumbnail[] = [];
   errors = {
     characterSearch: false,
@@ -64,7 +61,6 @@ export class TicTacToeComponent implements OnInit {
       this.characters = this.characters.concat(
         this.createDataThumbnail(this.characterData[0])
       );
-
       this.isError(false, '', 1);
       console.log('addPlayer', this.characters);
     } else {
@@ -79,6 +75,9 @@ export class TicTacToeComponent implements OnInit {
       id: character.id,
       characterName: character.name,
       characterImage: character.thumbnail.path + '.' + character.thumbnail.extension,
+      points: 0,
+      marginPhoto: this.characters.length == 1 ? '0px 0px 0px 12px' : '0px 12px 0px 0px',
+      flexDirectionThumbnail: this.characters.length == 1 ? 'row-reverse' : ''
     }
   }
 
@@ -92,29 +91,5 @@ export class TicTacToeComponent implements OnInit {
     this.errors.message = message;
   }
 
-
-
-
-
-
-
-
-
-
-  teste: IThumbnail[] = [
-    {
-      characterImage: 'https://imgur.com/IQ7JyXb.jpg',
-      characterName: 'Batiman e Robin',
-      points: 1,
-      marginPhoto: '0 8px 0 0'
-    },
-    {
-      characterImage: 'http://i.stack.imgur.com/AyzfI.jpg',
-      characterName: 'Batiman e Robin',
-      points: 1,
-      marginPhoto: '0 0 0 8px',
-      flexDirectionThumbnail: 'row-reverse'
-    }
-  ]
 
 }

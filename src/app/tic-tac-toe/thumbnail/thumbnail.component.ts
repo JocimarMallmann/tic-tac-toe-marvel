@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { IThumbnail } from './IThumbnail';
 
@@ -7,16 +8,21 @@ import { IThumbnail } from './IThumbnail';
   templateUrl: './thumbnail.component.html',
   styleUrls: ['./thumbnail.component.scss']
 })
-export class ThumbnailComponent implements OnInit {
+export class ThumbnailComponent implements OnInit, OnDestroy, OnChanges {
 
-  @Input() thumbnail: IThumbnail = {
-    points: 0,
-    marginPhoto: '0px 8px 0px 0px'
-  };
+  @Input() thumbnail: IThumbnail;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.thumbnail) {
+      console.log('EXECUTA ONCHANGES');
+      console.log('ONCHANGES', this.thumbnail);
+    }
+  }
+  ngOnDestroy(): void {
   }
 
 }
