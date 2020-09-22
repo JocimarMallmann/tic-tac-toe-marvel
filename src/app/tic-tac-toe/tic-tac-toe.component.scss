@@ -5,7 +5,7 @@
 
 .thumbnail {
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
 }
 .screen {
   position: relative;
@@ -40,6 +40,12 @@
   background-color: #00e676;
 }
 
+// responsividade
+@media screen and (min-width: 576px) {
+  .thumbnail {
+    width: 80%;
+  }
+}
 @media screen and (min-width: 768px) {
   .thumbnail {
     width: 60%;

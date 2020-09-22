@@ -29,9 +29,13 @@
 .btn:hover {
   background-color: #00e676;
 }
-
-.player-win {
-  font-family: 'Press Start 2P', cursive;
+.first-player {
+  font-size: 13px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+.player-win-or-empate {
   font-size: 20px;
   margin-top: 32px;
+  text-align: center;
 }
