@@ -27,7 +27,7 @@ export class ErrorMessageComponent implements OnInit, OnChanges {
       this.render.setStyle(this.divError.nativeElement, 'opacity', '1');
       setTimeout(
         () => this.render.setStyle(
-          this.divError.nativeElement, 'opacity', '0'), 4000
+          this.divError.nativeElement, 'opacity', '0'), 5000
         );
     } else {
       this.render.setStyle(this.divError.nativeElement, 'opacity', '0')

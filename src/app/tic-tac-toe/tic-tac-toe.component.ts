@@ -18,22 +18,27 @@ export class TicTacToeComponent implements OnInit {
     attempts: 1,
     message: ''
   };
+  playerWin: number = 0;
+  points: number = 0;
 
   constructor(private tictactoeService: TicTacToeService) { }
 
   ngOnInit(): void {
   }
 
+  playerWinPoint(event) {
+    this.playerWin = event;
+    console.log(this.playerWin);
+    this.addPoints(this.characters);
+  }
+
   nameSearchEnter(name) {
-    // this.characterName = name;
-    console.log('nameSearchEnter tic-tac-toe: ', name);
 
     this.tictactoeService.getCharacters().subscribe((marvel) => {
       this.marvel = marvel;
       this.characterData = marvel.data.results;
       console.log(this.characterData);
 
-      // this.isError(false, '', 1);
       this.addPlayer(name);
     }, (err) => {
       console.log(err);
@@ -41,8 +46,7 @@ export class TicTacToeComponent implements OnInit {
     });
   }
 
-
-
+  // Faz a busca pelo nome do personagem, nos dados puxados pela requisição
   filterCharacter(name) {
     return this.characterData.filter((character) => {
       name = name.trim().toLowerCase();
@@ -50,6 +54,7 @@ export class TicTacToeComponent implements OnInit {
     });
   }
 
+  // Adiciona players para jogar
   addPlayer(name: string) {
     if(this.characters.length >= 2) {
       this.isError(true, 'Players já selecionados.');
@@ -69,6 +74,7 @@ export class TicTacToeComponent implements OnInit {
   }
 
   // "Aaron Stack" "Abyss"
+  // Cria o objeto com as informações para o 'componente thumbnail' usar
   createDataThumbnail(character): IThumbnail {
     console.log('createDataThumbnail - ', character);
     return <IThumbnail>{
@@ -81,6 +87,29 @@ export class TicTacToeComponent implements OnInit {
     }
   }
 
+  // Adicionando pontos ao vencer
+  addPoints(characters) {
+    if(this.playerWin === 1) {
+      characters[0].points++;
+    }
+    if(this.playerWin === 2) {
+      characters[1].points++;
+    }
+  }
+
+  twoPlayers(): boolean {
+    return this.characters.length === 2;
+  }
+  // verifica se existem 2 players para exibir o jogo
+  readyPlayers(): boolean {
+    if(!this.twoPlayers()) {
+      console.log('seleciona 2 jogadores');
+      return false;
+    }
+    return true;
+  }
+
+  // metodo genérico para erros, criado para usar com o 'componente error-message'
   private isError(error: boolean, message?: string, attempts?: number) {
     console.log(message);
     this.errors.characterSearch = error;

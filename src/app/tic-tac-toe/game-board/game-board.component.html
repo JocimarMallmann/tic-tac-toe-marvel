@@ -12,3 +12,14 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="empate">
+  <span>Velha!</span>
+</div>
+<div *ngIf="victory">
+  Player {{ finisher.player }} venceu!
+</div>
+<button *ngIf="empate || victory"
+        (click)="initGameBoard()">
+        Jogar novamente
+</button>

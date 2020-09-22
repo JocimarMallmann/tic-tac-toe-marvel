@@ -1,17 +1,22 @@
-<div class="ht-100 flex container">
+<div class="ht-100 container">
+  <div class="ht-100 flex screen">
 
-  <app-select-players (eventKeyupEnter)="nameSearchEnter($event)">
-  </app-select-players>
+    <app-select-players (eventKeyupEnter)="nameSearchEnter($event)"
+                        class="wd-50">
+    </app-select-players>
 
-  <app-error-message [text]="errors.message"
-                     [error]="errors.characterSearch"
-                     [attempts]="errors.attempts"></app-error-message>
+    <app-error-message [text]="errors.message"
+                      [error]="errors.characterSearch"
+                      [attempts]="errors.attempts"></app-error-message>
 
-  <app-game-board></app-game-board>
+    <app-game-board *ngIf="readyPlayers()"
+                    (playerWin)="playerWinPoint($event)">
+    </app-game-board>
 
-  <div class="flex thumbnail">
-    <app-thumbnail *ngFor="let thumbnail of characters"
-                    [thumbnail]="thumbnail">
-    </app-thumbnail>
+    <div class="flex thumbnail">
+      <app-thumbnail *ngFor="let thumbnail of characters"
+                      [thumbnail]="thumbnail">
+      </app-thumbnail>
+    </div>
   </div>
 </div>

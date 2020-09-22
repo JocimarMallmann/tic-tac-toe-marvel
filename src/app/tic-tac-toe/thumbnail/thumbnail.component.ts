@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Subject } from 'rxjs';
 
 import { IThumbnail } from './IThumbnail';
 
@@ -18,7 +17,6 @@ export class ThumbnailComponent implements OnInit, OnDestroy, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
     if(changes.thumbnail) {
-      console.log('EXECUTA ONCHANGES');
       console.log('ONCHANGES', this.thumbnail);
     }
   }

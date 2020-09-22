@@ -1,4 +1,6 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+import { IFinisherGame } from './IFinisherGame';
 
 @Component({
   selector: 'app-game-board',
@@ -16,6 +18,8 @@ export class GameBoardComponent implements OnInit {
   plays: number = 0; // número de jogadas
   victory: boolean = false;
   empate: boolean = false;
+  finisher: IFinisherGame = null;
+  @Output() playerWin: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -28,7 +32,14 @@ export class GameBoardComponent implements OnInit {
       this.gameBoard[i] = [this.EMPTY, this.EMPTY, this.EMPTY];
     }
     console.log(this.gameBoard);
+    this.resetGameValues();
     this.player = this.drawPlayer();
+  }
+  resetGameValues() {
+    this.empate = false;
+    this.victory = false;
+    this.finisher = null;
+    this.plays = 0;
   }
 
   play(i, j) {
@@ -43,13 +54,16 @@ export class GameBoardComponent implements OnInit {
     this.gameBoard[i][j] = this.player;
     this.plays++; // incrementa número de jogadas
     // verifica se o jogador venceu, e retorna um objeto que contém o jogador
-    let finisher = this.isWin(i, j);
-    console.log(finisher);
+    this.finisher = this.isWin(i, j);
+    console.log(this.finisher);
+    if(this.finisher) {
+      this.playerWin.emit(this.finisher.player);
+    }
     // troca a vez do jogador.
     this.changePlayer(this.player);
   }
 
-  winnerValidation(row: number, col: number, gameBoard: any, player: number): Object {
+  winnerValidation(row: number, col: number, gameBoard: any, player: number): IFinisherGame {
     let finisher = null;
     // Validando linhas
     if(gameBoard[row][0] === player &&
