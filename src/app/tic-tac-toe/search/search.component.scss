@@ -1,10 +1,10 @@
 .input {
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #212121;
   width: 100%;
   padding: 8px;
   transition: border ease .5s;
 }
 .input:focus {
-  border: 1px solid #212121;
+  border: 1px solid #f5f5f5;
 }

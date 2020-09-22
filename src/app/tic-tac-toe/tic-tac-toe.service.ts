@@ -14,14 +14,11 @@ export class TicTacToeService {
 
   constructor(private http: HttpClient) { }
 
-  getCharacter() {
-  }
-
+  // Busca na API da marvel
   getCharacters(): Observable<any> {
     return this.http.get<any>(`
               ${ API }ts=${ TIMESTAMP }&apikey=${ APIKEY }&hash=${ HASH }
             `);
   }
-
 
 }

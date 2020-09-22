@@ -1,25 +1,27 @@
-<div class="" #gameBoardd>
-  <div *ngFor="let rows of gameBoard; let i = index"
-        class="flex">
-    <div *ngFor="let cols of rows; let j = index"
-          class="square"
-          (click)="play(i, j)"
-          [ngClass]="{
-            'x': showX(i,j),
-            'o': showO(i,j)
-          }">
-          <!-- $event.target -->
+<div class="flex game-board">
+  <div>
+    <div *ngFor="let rows of gameBoard; let i = index"
+          class="flex">
+      <div *ngFor="let cols of rows; let j = index"
+            class="square"
+            (click)="play(i, j)"
+            [ngClass]="{
+              'x': showX(i,j),
+              'o': showO(i,j)
+            }">
+      </div>
     </div>
   </div>
-</div>
 
-<div *ngIf="empate">
-  <span>Velha!</span>
+  <div *ngIf="empate">
+    <span>Velha!</span>
+  </div>
+  <div *ngIf="victory" class="player-win">
+    Player {{ finisher.player }} venceu!
+  </div>
+  <button *ngIf="empate || victory"
+          (click)="initGameBoard()"
+          class="btn">
+          Jogar novamente
+  </button>
 </div>
-<div *ngIf="victory">
-  Player {{ finisher.player }} venceu!
-</div>
-<button *ngIf="empate || victory"
-        (click)="initGameBoard()">
-        Jogar novamente
-</button>

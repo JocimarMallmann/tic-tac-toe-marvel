@@ -1,15 +1,21 @@
-<div class="ht-100 container">
+<div class="ht-100 container dark-theme">
+  <app-error-message [text]="errors.message"
+                    [error]="errors.characterSearch"
+                    [attempts]="errors.attempts"></app-error-message>
+
   <div class="ht-100 flex screen">
+    <div *ngIf="!isReadyPlayers()"
+          class="flex select-players">
+      <app-select-players (eventKeyupEnter)="nameSearchEnter($event)">
+      </app-select-players>
 
-    <app-select-players (eventKeyupEnter)="nameSearchEnter($event)"
-                        class="wd-50">
-    </app-select-players>
+      <button type="button" (click)="readyPlayers()"
+              class="btn">
+        Ready
+      </button>
+    </div>
 
-    <app-error-message [text]="errors.message"
-                      [error]="errors.characterSearch"
-                      [attempts]="errors.attempts"></app-error-message>
-
-    <app-game-board *ngIf="readyPlayers()"
+    <app-game-board *ngIf="isReadyPlayers()"
                     (playerWin)="playerWinPoint($event)">
     </app-game-board>
 

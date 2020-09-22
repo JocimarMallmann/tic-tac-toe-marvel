@@ -20,6 +20,7 @@ export class TicTacToeComponent implements OnInit {
   };
   playerWin: number = 0;
   points: number = 0;
+  ready: boolean = false; // se está pronto pra começar o jogo
 
   constructor(private tictactoeService: TicTacToeService) { }
 
@@ -60,6 +61,10 @@ export class TicTacToeComponent implements OnInit {
       this.isError(true, 'Players já selecionados.');
       return;
     }
+    if(!name) {
+      this.isError(true, 'Escolha um personagem da marvel.');
+      return;
+    }
     this.characterData = this.filterCharacter(name);
 
     if(this.characterData.length) {
@@ -82,7 +87,7 @@ export class TicTacToeComponent implements OnInit {
       characterName: character.name,
       characterImage: character.thumbnail.path + '.' + character.thumbnail.extension,
       points: 0,
-      marginPhoto: this.characters.length == 1 ? '0px 0px 0px 12px' : '0px 12px 0px 0px',
+      marginPhoto: this.characters.length == 1 ? '0px 0px 0px 16px' : '0px 16px 0px 0px',
       flexDirectionThumbnail: this.characters.length == 1 ? 'row-reverse' : ''
     }
   }
@@ -100,13 +105,20 @@ export class TicTacToeComponent implements OnInit {
   twoPlayers(): boolean {
     return this.characters.length === 2;
   }
-  // verifica se existem 2 players para exibir o jogo
-  readyPlayers(): boolean {
-    if(!this.twoPlayers()) {
-      console.log('seleciona 2 jogadores');
+  // verifica se existem 2 players e se clicaram em começar para exibir o jogo
+  isReadyPlayers(): boolean {
+    if(!this.twoPlayers() || !this.ready) {
       return false;
     }
     return true;
+  }
+  readyPlayers() {
+    if(!this.twoPlayers()) {
+      console.log('selecione 2 jogadores.');
+      this.isError(true, 'Selecione 2 jogadores e clique em Ready.');
+    } else {
+      this.ready = true;
+    }
   }
 
   // metodo genérico para erros, criado para usar com o 'componente error-message'

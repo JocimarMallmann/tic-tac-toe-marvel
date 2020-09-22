@@ -19,7 +19,7 @@ export class GameBoardComponent implements OnInit {
   victory: boolean = false;
   empate: boolean = false;
   finisher: IFinisherGame = null;
-  @Output() playerWin: EventEmitter<any> = new EventEmitter();
+  @Output() playerWin: EventEmitter<any> = new EventEmitter(); // emite o jogador vencedor
 
   constructor() { }
 
@@ -42,6 +42,7 @@ export class GameBoardComponent implements OnInit {
     this.plays = 0;
   }
 
+  // Faz a jogada
   play(i, j) {
     console.log(i, j);
     if(this.gameBoard[i][j] !== this.EMPTY || this.victory) {
@@ -57,12 +58,13 @@ export class GameBoardComponent implements OnInit {
     this.finisher = this.isWin(i, j);
     console.log(this.finisher);
     if(this.finisher) {
-      this.playerWin.emit(this.finisher.player);
+      this.playerWin.emit(this.finisher.player); // emite o jogador vencedor
     }
     // troca a vez do jogador.
     this.changePlayer(this.player);
   }
 
+  // validação do tabuleiro
   winnerValidation(row: number, col: number, gameBoard: any, player: number): IFinisherGame {
     let finisher = null;
     // Validando linhas
@@ -102,6 +104,7 @@ export class GameBoardComponent implements OnInit {
       }
     return finisher;
   }
+  // verifica se tem um vencedor
   isWin(posX, posY): Object {
     let finisher = this.winnerValidation(
       posX, posY, this.gameBoard, this.player
@@ -115,7 +118,7 @@ export class GameBoardComponent implements OnInit {
     console.log('vítoria: ', this.victory, ' empate: ', this.empate);
     return finisher;
   }
-
+  // alterna a vez dos jogadores
   changePlayer(player) {
     if(player === 1) {
       ++this.player;

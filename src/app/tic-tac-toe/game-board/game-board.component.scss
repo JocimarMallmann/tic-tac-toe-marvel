@@ -3,9 +3,35 @@
   width: 72px;
   height: 72px;
 }
+.game-board {
+  flex-direction: column;
+  align-items: center;
+}
+// classes 'x' e 'o', dos quadrados do tabuleiro
 .x {
   background-color: #2196f3;
 }
 .o {
   background-color: #f44336;
+}
+
+// button jogar novamente
+.btn {
+  border-radius: 8px;
+  border: 1px solid #00c853;
+  background-color: #00c853;
+  font-size: 20px;
+  color: white;
+  padding: 20px 36px;
+  margin-top: 32px;
+  transition: .3s;
+}
+.btn:hover {
+  background-color: #00e676;
+}
+
+.player-win {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  margin-top: 32px;
 }
